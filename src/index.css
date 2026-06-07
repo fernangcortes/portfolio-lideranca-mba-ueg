@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@layer base {
+  body {
+    @apply bg-[#0F172A] text-[#F5F7FA] font-sans antialiased selection:bg-[#2D7FF9] selection:text-white;
+  }
+}
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-sub: "Poppins", sans-serif;
+  --font-mono: "IBM Plex Sans", monospace;
+  
+  --color-primary-dark: #0B1E5B;
+  --color-primary-neon: #2D7FF9;
+  --color-purple-accent: #6C4DFF;
+  --color-cyan-accent: #00C8FF;
+}
+
+/* Custom visual styling */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37), inset 0 1px 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.glass-panel-hover {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-panel-hover:hover {
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(45, 127, 249, 0.4);
+  box-shadow: 0 20px 40px -15px rgba(45, 127, 249, 0.25), inset 0 1px 1px 0 rgba(255, 255, 255, 0.1);
+  transform: translateY(-3px);
+}
+
+.glow-neon-blue {
+  box-shadow: 0 0 20px rgba(45, 127, 249, 0.15);
+}
+
+.glow-neon-purple {
+  box-shadow: 0 0 20px rgba(108, 77, 255, 0.15);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0F172A;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1E293B;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2D7FF9;
+}
+
+.scroll-indicator-bar {
+  transition: width 0.1s ease;
+}
+
+/* ==========================================
+   PREMIUM PRINT & PDF EXPORT STYLESHEET
+   ========================================== */
+@media print {
+  /* Set A4 margins and layout style */
+  @page {
+    size: letter portrait;
+    margin: 16mm 18mm 16mm 18mm;
+  }
+
+  /* Force light theme elements on actual layout */
+  html, body, #root, main {
+    background: #ffffff !important;
+    background-color: #ffffff !important;
+    color: #1e293b !important;
+    font-family: "Inter", sans-serif !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Hide interactive, search, floating and floating chat elements entirely */
+  nav,
+  header,
+  iframe,
+  footer,
+  #chat-toggle-btn,
+  .print-hidden,
+  .no-print,
+  .fixed,
+  button,
+  .global-search-search-bar,
+  input,
+  textarea {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+
+  /* Strip background color gradients, glows, absolute background visual decorations and overlays */
+  div[class*="bg-gradient-to"],
+  div[class*="blur-"],
+  div[class*="opacity-"],
+  .animate-pulse,
+  .animate-ping,
+  .glow-neon-blue,
+  .glow-neon-purple {
+    background: none !important;
+    background-image: none !important;
+    box-shadow: none !important;
+    filter: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  /* Format Glass panels as structured ink-safe layout cards with borders */
+  .glass-panel {
+    background: #ffffff !important;
+    border: 1px solid #cbd5e1 !important;
+    box-shadow: none !important;
+    color: #0f172a !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    margin-bottom: 2rem !important;
+    page-break-inside: avoid !important;
+    border-radius: 12px !important;
+    padding: 1.5rem !important;
+  }
+
+  /* Readability of headers and content blocks */
+  h1, h2, h3, h4, h5, h6 {
+    color: #0f172a !important;
+    font-family: "Space Grotesk", sans-serif !important;
+    page-break-after: avoid !important;
+    text-shadow: none !important;
+    margin-top: 1rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  p, span, li, td, th {
+    color: #334155 !important;
+    text-shadow: none !important;
+  }
+
+  /* Make lists item symbols look robust */
+  li {
+    color: #334155 !important;
+    page-break-inside: avoid !important;
+  }
+
+  /* Avoid page breaks inside key informational segments and diagnostic modules */
+  section,
+  .grid,
+  .chart-container,
+  .flex-col {
+    page-break-inside: avoid !important;
+  }
+
+  /* Keep full width layout for container constraints */
+  .max-w-5xl, .max-w-7xl, .container {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+}
+

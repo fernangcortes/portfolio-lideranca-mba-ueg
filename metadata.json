@@ -1,0 +1,6 @@
+{
+  "name": "Portfólio de Liderança",
+  "description": "Portfólio interativo de liderança de Fernando Gomes Côrtes contendo diagnósticos, equipes de alto desempenho e plano de ação.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
